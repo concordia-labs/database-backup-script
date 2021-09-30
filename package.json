@@ -1,0 +1,17 @@
+{
+  "name": "database-backup-script",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Concordia Labs",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "moment": "^2.29.1",
+    "mysqldump": "^3.2.0",
+    "node-schedule": "^2.0.0"
+  }
+}
