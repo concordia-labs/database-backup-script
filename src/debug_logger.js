@@ -1,6 +1,10 @@
 const moment = require('moment');
 const fs = require('fs');
 
+if (!fs.existsSync('./logs')){
+  fs.mkdirSync('./logs');
+}
+
 const logFile = fs.createWriteStream(
   `logs/debug_${ moment().format('YYYYMMDDHHmmss') }.log`, 
   { flags : 'w' }

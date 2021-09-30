@@ -6,6 +6,10 @@ const writeLogFile = require('./debug_logger');
 
 dotenv.config();
 
+if (!fs.existsSync('./dumps')){
+  fs.mkdirSync('./dumps');
+}
+
 const dumpDatabase = async () => {
   const baseFileName = `${ process.env.DB_NAME}_${ moment().format('YYYYMMDDHHmmss') }`;
   const dumpFileName = `dump_${ baseFileName }.sql.gz`;
