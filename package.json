@@ -4,14 +4,23 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix ."
   },
   "author": "Concordia Labs",
   "license": "ISC",
   "dependencies": {
+    "cronitor": "^2.2.3",
     "dotenv": "^10.0.0",
     "moment": "^2.29.1",
     "mysqldump": "^3.2.0",
+    "node-cron": "^3.0.0",
     "node-schedule": "^2.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.24.2"
   }
 }
