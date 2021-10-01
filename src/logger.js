@@ -1,7 +1,7 @@
 const dotenv = require('dotenv');
 const moment = require('moment');
 const fs = require('fs');
-const CronMonitor = require('./cronitor_helper');
+const CronMonitor = require('./cronitor/cron-monitor');
 
 dotenv.config();
 

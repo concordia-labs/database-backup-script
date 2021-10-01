@@ -1,0 +1,24 @@
+[
+    {
+        "DB_HOST": "localhost",
+        "DB_NAME": "my_database",
+        "DB_USER": "my_username",
+        "DB_PASSWORD": "my_password",
+        "DB_TYPE": "mysql",
+        "COMPRESS_FILE": true,
+        "CRON_PERIOD": "0 0 * * 1",
+        "CRONITOR_API_KEY": "your_api_key",
+        "CRONITOR_MONITOR_KEY": "your_monitor_key"
+    },
+    {
+        "DB_HOST": "another_host",
+        "DB_NAME": "another_database",
+        "DB_USER": "another_username",
+        "DB_PASSWORD": "another_password",
+        "DB_TYPE": "mysql",
+        "COMPRESS_FILE": true,
+        "CRON_PERIOD": "0 0 * * 1",
+        "CRONITOR_API_KEY": "your_api_key",
+        "CRONITOR_MONITOR_KEY": "your_monitor_key"
+    }
+]

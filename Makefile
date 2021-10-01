@@ -2,7 +2,7 @@ setup:
 	npm i
 
 run:
-	node src/index.js
+	node src/schedule.js
 
 clear-logs:
 	rm -rf logs/*

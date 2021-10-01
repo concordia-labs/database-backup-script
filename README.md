@@ -7,10 +7,6 @@ A simple NodeJS script to manage the scheduled backup of a database.
 * Setup the project with the command `make **setup`**
 * Create a `.env` file on the project root folder, following the `.env.example` file:
     ```python
-    DB_HOST=localhost
-    DB_NAME=my_database
-    DB_USER=my_username
-    DB_PASSWORD=my_password
     CRON_PERIOD='0 0 * * 1' # Default cron set to Monday 00:00 with a weekly recurrency
     KEEP_LOG_FILE=true # Toggles wether or not the script manages the log files to keep track of the execution 
     CRONITOR_API_KEY=your_api_key # Optional, will only be needed if you wish to integrate with Cronitor to monitor the script execution
@@ -18,6 +14,34 @@ A simple NodeJS script to manage the scheduled backup of a database.
     ENVIRONMENT=local # Defines the environment where the script will be running, useful for Cronitor integration
     ```
     * *If you have doubts about the cron configuration, visit the [crontab guru](https://crontab.guru/) website.*
+* Create a `database-config.json` on the project root folder, following the `database-config.json.example` file:
+  ```json
+  [
+    {
+        "DB_HOST": "localhost",
+        "DB_NAME": "my_database",
+        "DB_USER": "my_username",
+        "DB_PASSWORD": "my_password",
+        "DB_TYPE": "mysql", // Defines which client will be used to make the database dump
+        "COMPRESS_FILE": true, // This value is optional, can be used if you want to specify the var for this job, otherwise you can use the .env file to configure this
+        "CRON_PERIOD": "0 0 * * 1", // This value is optional, can be used if you want to specify the var for this job, otherwise you can use the .env file to configure this
+        "CRONITOR_API_KEY": "your_api_key", // This value is optional, can be used if you want to specify the var for this job, otherwise you can use the .env file to configure this
+        "CRONITOR_MONITOR_KEY": "your_monitor_key" // This value is optional, can be used if you want to specify the var for this job, otherwise you can use the .env file to configure this
+    },
+    {
+        "DB_HOST": "another_host",
+        "DB_NAME": "another_database",
+        "DB_USER": "another_username",
+        "DB_PASSWORD": "another_password",
+        "DB_TYPE": "mysql",
+        "COMPRESS_FILE": true,
+        "CRON_PERIOD": "0 0 * * 1",
+        "CRONITOR_API_KEY": "your_api_key",
+        "CRONITOR_MONITOR_KEY": "your_monitor_key"
+    }
+  ]
+  ```
+
 * Execute the script with `make run`.
 * Done! Now you have your database dump schedule script up and running.
 * The database dumps will be saved inside the `dumps` folder with the `.sql.gz` extension, so they will be compressed files, to optimize space.
