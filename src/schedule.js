@@ -1,21 +1,26 @@
 const dotenv = require('dotenv');
-const moment = require('moment');
 const schedule = require('node-schedule');
 const async = require('async');
 const fs = require('fs');
-const DatabaseDump = require('./database-dump/database-dump');
+const { backupDatabase } = require('./database-backup');
 
 dotenv.config();
 
-const databaseConfigurations = JSON.parse(fs.readFileSync('database-config.json'));
+const dbConfigurations = JSON.parse(fs.readFileSync('database-config.json'));
 
 async.map(
-  databaseConfigurations,
+  dbConfigurations,
   dbConfig => {
     const CRON_PERIOD = dbConfig.CRON_PERIOD || process.env.CRON_PERIOD;
+    const AWS_S3_BACKUP_PATH = dbConfig.AWS_S3_BACKUP_PATH || process.env.AWS_S3_BACKUP_PATH;
     schedule.scheduleJob(
       CRON_PERIOD,
-      () => new DatabaseDump(dbConfig).dumpDatabase()
+      async () => {
+        backupDatabase({
+          dbConfig,
+          backupBasePath: AWS_S3_BACKUP_PATH
+        });
+      }
     );
   }
 );

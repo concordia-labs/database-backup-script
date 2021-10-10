@@ -42,8 +42,13 @@ class DatabaseDump {
     }
 
     return databaseDumper.dump(this.dbConfiguration)
-      .then(({ dumpFileName }) => {
-        Logger.complete(`New DB dump "${ dumpFileName }" was created successfuly!`);
+      .then(({ dumpFileName, filePath }) => {
+        Logger.success(`New DB dump "${ dumpFileName }" was created successfuly!`);
+
+        return {
+          dumpFileName,
+          filePath
+        };
       })
       .catch(({ error, baseFileName, dumpFileName, filePath }) => {
         Logger.writeErrorLogFile(baseFileName, error);
@@ -58,6 +63,12 @@ class DatabaseDump {
           filePath,
           () => Logger.writeDebugFile(`Deleted ${ dumpFileName } as the operation was not successfuly completed.`)
         );
+        return {
+          error,
+          baseFileName,
+          filePath: null,
+          dumpFileName: null
+        };
       });
   }
 
