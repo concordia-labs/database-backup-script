@@ -11,7 +11,7 @@
   "author": "Concordia Labs",
   "license": "ISC",
   "dependencies": {
-    "async": "^3.2.1",
+    "async": "^3.2.2",
     "aws-sdk": "^2.1004.0",
     "cronitor": "^2.2.3",
     "dotenv": "^10.0.0",
